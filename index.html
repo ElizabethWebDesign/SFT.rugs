@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFT Rugs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body { font-family:'Inter',sans-serif; background:#f8f5f0; margin:0; scroll-behavior:smooth; }
+h1,h2,h3{ font-family:'Marcellus',serif; }
+    /* CUSTOM ORDER FORM */
+#customOrder{
+  background:#f1e3c6;
+  padding:100px 20px;
+}
+
+    
+/* NAVBAR */
+.navbar{background:#3e2c23;padding:10px 20px; display:flex; align-items:center;}
+
+ .logo{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+     
+  line-height:1;
+}
+
+.logo-main{
+  font-family:'Tenor Sans', sans-serif;
+  font-size:22px;
+  font-weight:400;
+  color:#f1e3c6;
+  letter-spacing:3px;
+}
+
+.logo-sub{
+  font-family:'Inter', sans-serif;
+  font-size:9px;
+  color:#c8b39b;
+  letter-spacing:2px;
+  margin-top:4px;
+  text-transform:uppercase;
+}
+
+/* HERO */
+.hero{background:url('11.peg.jpeg') center/cover no-repeat;height:80vh;display:flex;align-items:center;justify-content:center;color:white;}
+.hero-box{background:rgba(0,0,0,0.6);padding:40px;border-radius:10px;text-align:center;margin-bottom:40px;}
+.btn-custom{background:#8b5e3c;color:white;}
+.btn-custom:hover{background:#6f472d;}
+
+/* SECTIONS */
+.section{padding:80px 0;text-align:center;}
+.section h2{font-size:36px;color:#3e2c23;margin-bottom:20px;}
+.section p{color:#5c4b3c;max-width:700px;margin:auto;margin-bottom:40px;line-height:1.6;}
+
+/* CATEGORY */
+.categories{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:40px;}
+.category-card{background:#f1e3c6;padding:30px;border-radius:15px;cursor:pointer;width:220px;font-weight:600;user-select:none;}
+.category-card:hover{background:#d6bfa7;}
+
+.gallery img {
+  width: 100%;
+  height: 320px;        /* makes images bigger */
+  object-fit: contain;  /* shows full image */
+  background: #fff;     /* clean background around image */
+  border-radius: 18px;
+  transition: transform 0.3s ease;
+  padding: 10px;
+}
+    .gallery .col-md-4{
+  margin-bottom:35px;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+}  
+    
+/* FOOTER */
+.footer{background:#3e2c23;color:white;text-align:center;padding:20px;}
+.whatsapp-btn{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px;border-radius:50%;}
+
+/* Back button at bottom of gallery */
+#backButton {
+  background: linear-gradient(135deg,#4a7c59,#6fa87c);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  transition: all 0.3s ease;
+}
+
+#backButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+/* Extra spacing for gallery text */
+#galleryTitle{margin-bottom:30px;}
+#galleryIntro{margin-bottom:40px;}
+    
+    
+@keyframes flow {
+  0% { transform:scaleX(0.3); opacity:0.5; }
+  50% { transform:scaleX(1); opacity:1; }
+  100% { transform:scaleX(0.3); opacity:0.5; }
+}
+/* CONTACT SECTION */
+#contact{background:#f1e3c6;padding:60px 20px;text-align:center;}
+#contact h2{margin-bottom:30px;}
+.social-icons a{
+  font-size:32px;
+  margin:0 15px;
+  color:#3e2c23;
+  transition:0.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+.social-icons a:hover{color:#8b5e3c;}
+   
+
+/* SIZE WRAPPER */
+.size-wrapper{
+  margin-top:22px;
+  padding:18px 12px;
+  background:rgba(255,255,255,0.45);
+  border-radius:20px;
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.4);
+}
+
+/* TITLE */
+.size-label{
+  font-size:11px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:#9a7a5f;
+  margin-bottom:20px;
+  display:block;
+}
+
+/* OPTIONS */
+.size-options{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:18px;
+}
+
+/* SIZE BUTTONS */
+.size-btn{
+  border:none;
+  background:none;
+  font-size:20px;
+  font-family:'Cormorant Garamond', serif;
+  color:#4b392d;
+  cursor:pointer;
+  position:relative;
+  transition:all .3s ease;
+  padding:4px 2px;
+}
+
+/* GOLD DOT */
+.size-btn::before{
+  content:'✦';
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  color:#d2b48c;
+  opacity:0;
+  transition:.3s ease;
+}
+
+/* UNDERLINE */
+.size-btn::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background:linear-gradient(to right,#c8a27a,#8b5e3c);
+  transform:translateX(-50%);
+  transition:.3s ease;
+  border-radius:10px;
+}
+
+/* HOVER */
+.size-btn:hover{
+  color:#8b5e3c;
+  transform:translateY(-2px);
+}
+
+.size-btn:hover::after{
+  width:100%;
+}
+
+/* ACTIVE */
+.size-btn.active{
+  color:#8b5e3c;
+}
+
+.size-btn.active::after{
+  width:100%;
+}
+
+.size-btn.active::before{
+  opacity:1;
+}
+
+/* PRICE */
+.price-display{
+  margin-top:24px;
+
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  padding:10px 22px;
+
+  background:#fff;
+  border:2px solid #d8c1a7;
+  border-radius:50px;
+
+  font-family:'Marcellus', serif;
+  font-size:30px;
+  font-weight:600;
+  color:#7a5335;
+
+  letter-spacing:1px;
+
+  box-shadow:0 4px 14px rgba(0,0,0,0.05);
+
+  transition:all .25s ease;
+}
+
+/* small luxury dot */
+.price-display::before{
+  content:'●';
+  font-size:12px;
+  color:#c8a27a;
+}
+
+/* hover */
+.price-display:hover{
+  transform:translateY(-2px);
+  background:#fcfaf7;
+  border-color:#b89067;
+}
+/* CUSTOM ORDER FORM CARD */
+#customOrder form{
+  background:#fff;
+  max-width:720px;
+  margin:auto;
+  padding:50px;
+  border-radius:28px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.10);
+  border:1px solid rgba(139,94,60,0.15);
+  position:relative;
+}
+
+/* TITLE IMPROVEMENT */
+#customOrder h2{
+  font-size:44px;
+  color:#3e2c23;
+  margin-bottom:10px;
+}
+
+#customOrder p{
+  font-size:18px;
+  color:#7a5d48;
+  margin-bottom:35px;
+}
+
+/* INPUT FIELDS */
+#customOrder input,
+#customOrder select,
+#customOrder textarea{
+  width:100%;
+  padding:15px 18px;
+  margin-bottom:18px;
+  border-radius:14px;
+  border:1px solid #d8c1a7;
+  background:#fcfaf7;
+  font-size:15px;
+  transition:0.3s ease;
+}
+
+/* FOCUS EFFECT (THIS MAKES IT LOOK LUXURY) */
+#customOrder input:focus,
+#customOrder select:focus,
+#customOrder textarea:focus{
+  outline:none;
+  border-color:#8b5e3c;
+  box-shadow:0 0 0 4px rgba(139,94,60,0.15);
+}
+
+/* TEXTAREA HEIGHT */
+#customOrder textarea{
+  min-height:120px;
+  resize:none;
+}
+
+/* SUBMIT BUTTON */
+#customOrder button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,#8b5e3c,#c2a98a);
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:1px;
+  transition:0.3s ease;
+}
+
+/* BUTTON HOVER */
+#customOrder button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 30px rgba(139,94,60,0.25);
+}
+
+/* FILE UPLOAD BOX */
+#customOrder input[type="file"]{
+  padding:12px;
+  background:#fff;
+}    
+    
+</style>
+
+</head>
+
+<body>
+  
+
+<nav class="navbar d-flex justify-content-between px-3">
+ <div class="logo">
+  <span class="logo-main">SFT</span>
+  <span class="logo-sub">RUGS • HANDCRAFTED</span>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-box">
+<h1>SFT Rugs</h1>
+<p>Authentic handmade rugs crafted with passion</p>
+<a href="javascript:void(0)" class="btn btn-custom" onclick="goToSections()">Explore More</a>
+</div>
+</section>
+
+<section id="sections" class="section">
+<h2>Explore Our Collections</h2>
+<p>Discover the perfect rug to elevate every space in your home.</p>
+
+<div class="categories">
+<div class="category-card" onclick="showGallery('kitchen')">🍳 Kitchen Rugs</div>
+<div class="category-card" onclick="showGallery('bath')">🛁 Bathroom Rugs</div>
+<div class="category-card" onclick="showGallery('room')">🏡 Room Rugs</div>
+<div class="category-card" onclick="showGallery('kids')">🧸 Children Rugs</div>
+<div class="category-card" onclick="showGallery('tech')">💻 Digital Collection</div>
+<div class="category-card" onclick="showGallery('rug')">✨ Rug Framed Mirror</div>
+<div class="category-card" onclick="showGallery('jewelry')">💅 Jewelry Rugs</div>
+  <div class="category-card" onclick="showGallery('coasters')">☕ Cup Coasters</div>  
+<div class="category-card" onclick="showGallery('qatar')">🇶🇦 Qatar Vibes</div>
+
+</div>
+</section>
+
+<section id="gallery" class="container section" style="display:none;">
+<h2 id="galleryTitle"></h2>
+<p id="galleryIntro"></p>
+
+<div class="row gallery" id="galleryImages">
+
+<!-- Kitchen -->
+<div class="col-md-4" data-category="kitchen"><img src="k1.jpeg"></div>
+<div class="col-md-4" data-category="kitchen"><img src="k4.jpeg"></div>
+<div class="col-md-4" data-category="kitchen"><img src="k6.jpeg"></div>
+<div class="col-md-4" data-category="kitchen"><img src="k8.jpeg"></div>
+<div class="col-md-4" data-category="kitchen"><img src="k7.jpeg"></div>
+<div class="col-md-4" data-category="kitchen"><img src="k9.jpeg"></div>
+<div class="col-md-4" data-category="kitchen"><img src="k10.jpeg"></div>
+
+<!-- Bath -->
+<div class="col-md-4" data-category="bath"><img src="b1.jpeg"></div>
+<div class="col-md-4" data-category="bath"><img src="b2.jpeg"></div>
+<div class="col-md-4" data-category="bath"><img src="b4.jpeg"></div>
+<div class="col-md-4" data-category="bath"><img src="b5.jpeg"></div>
+<div class="col-md-4" data-category="bath"><img src="b7.jpeg"></div>
+<div class="col-md-4" data-category="bath"><img src="b10.jpeg"></div>
+<div class="col-md-4" data-category="bath"><img src="b11.jpeg"></div>
+<div class="col-md-4" data-category="bath"><img src="b14.jpeg"></div>
+
+<!-- Room -->
+<div class="col-md-4" data-category="room"><img src="RU1.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r21.jpg"></div>
+<div class="col-md-4" data-category="room"><img src="r3.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r7.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r8.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r9.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r10.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r11.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r12.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r13.jpeg"></div>
+<div class="col-md-4" data-category="room"><img src="r55.jpg"></div>
+    <div class="col-md-4" data-category="room"><img src="r23.jpg"></div>
+     <div class="col-md-4" data-category="room"><img src="R15.PNG"></div>
+
+
+<!-- Kids -->
+<div class="col-md-4" data-category="kids"><img src="ch1.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch2.png"></div>
+<div class="col-md-4" data-category="kids"><img src="ch3.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch5.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch6.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch7.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch8.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch9.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="10.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch11.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch12.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch13.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch14.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch15.jpeg"></div>
+<div class="col-md-4" data-category="kids"><img src="ch16.jpeg"></div>
+
+<!-- Tech -->
+<div class="col-md-4" data-category="tech"><img src="t3.jpeg"></div>
+<div class="col-md-4" data-category="tech"><img src="t2.JPG"></div>
+<div class="col-md-4" data-category="tech"><img src="t1.jpeg"></div>
+<div class="col-md-4" data-category="tech"><img src="t4.jpeg"></div>
+<div class="col-md-4" data-category="tech"><img src="t6.jpeg"></div>
+<div class="col-md-4" data-category="tech"><img src="t7.jpeg"></div>
+<div class="col-md-4" data-category="tech"><img src="t9.jpeg"></div>
+<div class="col-md-4" data-category="tech"><img src="t10.jpg"></div>
+
+<!-- Jewelry -->
+<div class="col-md-4" data-category="jewelry"><img src="j1.jpeg"></div>
+<div class="col-md-4" data-category="jewelry"><img src="j3.jpeg"></div>
+<div class="col-md-4" data-category="jewelry"><img src="j4.jpeg"></div>
+<div class="col-md-4" data-category="jewelry"><img src="j5.jpeg"></div>
+<div class="col-md-4" data-category="jewelry"><img src="j6.jpeg"></div>
+
+<!-- Mirror -->
+<div class="col-md-4" data-category="rug"><img src="m1.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m2.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m3.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m4.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m5.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m6.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m7.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m8.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m9.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m10.jpeg"></div>
+<div class="col-md-4" data-category="rug"><img src="m11.jpeg"></div>
+  <div class="col-md-4" data-category="rug"><img src="m11.PNG"></div> 
+    <div class="col-md-4" data-category="rug"><img src="m12.jpg"></div> 
+    <div class="col-md-4" data-category="rug"><img src="m13.jpg"></div> 
+    <div class="col-md-4" data-category="rug"><img src="m15.JPG"></div> 
+    <div class="col-md-4" data-category="rug"><img src="m16.JPG"></div> 
+    <div class="col-md-4" data-category="rug"><img src="m17.JPG"></div> 
+    <div class="col-md-4" data-category="rug"><img src="m18.JPG"></div> 
+    
+    
+    
+    
+    
+     
+    
+    
+    
+    <!-- Coasters -->
+<div class="col-md-4" data-category="coasters"><img src="c1.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c2.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c3.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c4.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c5.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c6.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c7.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c8.jpeg"></div>
+<div class="col-md-4" data-category="coasters"><img src="c11.PNG"></div>
+
+<!-- Qatar -->
+<div class="col-md-4" data-category="qatar"><img src="q1.PNG"></div>
+<div class="col-md-4" data-category="qatar"><img src="6.PNG"></div>
+<div class="col-md-4" data-category="qatar"><img src="q4.PNG"></div>
+ <div class="col-md-4" data-category="qatar"><img src="q3.PNG"></div>
+  <div class="col-md-4" data-category="qatar"><img src="q7.PNG"></div>
+    <div class="col-md-4" data-category="qatar" data-fixed-price="80">
+    <img src="g8.jpg">
+</div>
+    
+
+</div>
+
+<button onclick="backToCategories()" id="backButton">← Back</button>
+</section>
+    
+<!-- LUXURY CUSTOM ORDER -->
+<section id="customOrder" class="section" style="background:#f1e3c6;">
+<h2>Design Your Custom Rug</h2>
+<p>Create a unique piece tailored to your style.</p>
+
+
+
+ <form id="orderForm" enctype="multipart/form-data">
+ 
+     
+
+<!-- NAME -->
+<input type="text" id="name" name="Name" placeholder="Your Name" required>
+
+<!-- PHONE -->
+<input type="tel" id="phone" name="Phone" placeholder="Phone / WhatsApp" required>
+
+<!-- TYPE -->
+<select id="type" name="Rug Type" required>
+<option value="">Select Rug Type</option>
+<option>Kitchen Rug</option>
+<option>Bathroom Rug</option>
+<option>Room Rug</option>
+<option>Children Rug</option>
+<option>Digital Rug</option>
+<option>Mirror Rug</option>
+    <option>Jewelry Rug</option>
+<option>Qatar Vibes Rug</option>
+    <option>Cup Coasters</option>
+</select>
+
+<!-- SIZE -->
+<input type="text" id="size" name="Size" placeholder="Size (e.g. 120x180 cm)" required>
+
+<!-- DESCRIPTION -->
+<textarea id="desc" name="Description" placeholder="Describe your design..." required></textarea>
+
+<!-- IMAGE UPLOAD -->
+<div style="border:2px dashed #c2a98a;padding:20px;border-radius:15px;text-align:center;margin-top:20px;">
+<input type="file"
+       id="imageUpload"
+       name="Design Image"
+       accept="image/*"
+       onchange="previewImage(event)">
+<p style="margin-top:10px;color:#6b5b4d;">Upload design inspiration</p>
+
+<img id="preview" style="display:none;margin-top:15px;max-width:100%;border-radius:10px;">
+</div>
+
+<!-- BUTTON -->
+<button type="submit"
+style="margin-top:20px;width:100%;padding:12px;background:linear-gradient(135deg,#8b5e3c,#c2a98a);color:white;border:none;border-radius:10px;">
+Submit Request
+</button>
+<input type="hidden" name="_subject" value="New SFT Rugs Custom Order">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+
+</form>
+
+</section> 
+<!-- Contact Section -->
+<section id="contact">
+<h2>Contact Us</h2>
+<p style="
+  font-family:'Cormorant Garamond', serif;
+  font-weight:300;
+  font-size:22px;
+  color:#3e2c23;
+  letter-spacing:1px;
+  line-height:1.8;
+">
+
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:0s;">Step</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:0.2s;">into</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:0.4s;">our</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:0.6s;">world</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:0.8s;">of</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:1s;">craftsmanship</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:1.2s;">—</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:1.4s;">follow</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:1.6s;">us</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:1.8s;">for</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:2s;">new</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:2.2s;">designs,</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:2.4s;">stories,</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:2.6s;">and</span>
+<span style="opacity:0;animation:fadeWord 0.6s ease forwards;animation-delay:2.8s;">inspiration.</span>
+
+</p>
+
+<style>
+@keyframes fadeWord {
+  from {opacity:0; transform:translateY(15px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
+
+<!-- Animation (still inside HTML) -->
+<style>
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
+<div class="social-icons">
+  <a href="https://www.instagram.com/sft.handmade?igsh=OHM5ZWkycnhhMWV6&utm_source=qr" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+
+  <a href="https://www.tiktok.com/@sft.handmade?_r=1&_d=dmm9k3k6i53ddd&sec_uid=MS4wLjABAAAAAub4nC9n0d366tyBp1PnoM4p1LFFvDV582BQ4SkmDAsDOmEZsbIfEiRd30y00R0f&share_author_id=7624281357913834504&sharer_language=en&source=h5_m&u_code=f2kkc4821bd91e&item_author_type=1&utm_source=copy&tt_from=copy&enable_checksum=1&utm_medium=ios&share_link_id=3D76ECDA-E116-4782-8FD2-97F21815C0CD&user_id=7624281357913834504&sec_user_id=MS4wLjABAAAAAub4nC9n0d366tyBp1PnoM4p1LFFvDV582BQ4SkmDAsDOmEZsbIfEiRd30y00R0f&social_share_type=4&ug_btm=b0,b0&utm_campaign=client_share&share_app_id=1233" target="_blank">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+</section>
+
+<script>
+let savedScrollY = 0;
+ function goToSections() {
+  document.getElementById('gallery').style.display = 'none';
+  document.getElementById('sections').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('sections').offsetTop, behavior: "smooth" });
+}
+function showGallery(cat) {
+  savedScrollY = window.scrollY;
+
+  document.getElementById('sections').style.display = 'none';
+  document.getElementById('gallery').style.display = 'block';
+
+  // Show selected images
+  document.querySelectorAll('#galleryImages .col-md-4').forEach(img => {
+    img.style.display =
+      img.dataset.category === cat ? 'block' : 'none';
+  });
+
+  // Scroll to gallery section
+  document.getElementById('gallery').scrollIntoView({
+    behavior: "smooth"
+  });
+}
+  
+  const titles = {
+    kitchen: "Kitchen Rugs",
+    bath: "Bathroom Rugs",
+    room: "Room Rugs",
+    kids: "Children Rugs",
+    tech: "Digital Collection",
+    rug: "Rug Framed Mirrors",
+    jewelry: "Jewelry Rugs",
+    qatar: "Qatar Collection",
+    coasters: "Cup Coasters"
+  };
+
+  const descriptions = {
+    kitchen: "Elegant and durable rugs designed to bring warmth and style into your kitchen space.",
+    bath: "Soft, absorbent, and stylish rugs for bathrooms.",
+    room: "Premium handcrafted rugs for living spaces.",
+    kids: "Fun and safe rugs for children.",
+    tech: "Modern digital-inspired designs.",
+    rug: "Artistic mirror rugs.",
+    jewelry: "Luxury jewelry-inspired rugs.",
+    qatar: "Inspired by Qatar culture.",
+    coasters: "Home. Comfort. Coffee."
+  };
+
+  
+ 
+</script>
+   
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const priceMaps = {
+    default: {
+          "60 cm": "250 QAR",
+      "80 cm": "400 QAR",
+      "100 cm": "550 QAR",
+      "120 cm": "700 QAR",
+      "140 cm": "850 QAR",
+      "160 cm": "1000 QAR",
+      "180 cm": "1200 QAR"
+    }
+  };
+
+  const sizes = [ "60 cm","80 cm","100 cm","120 cm","140 cm","160 cm","180 cm"];
+
+  const items = document.querySelectorAll("#galleryImages .col-md-4");
+
+  items.forEach(item => {
+
+    const category = item.dataset.category;
+      /* FIXED PRICE ITEM */
+if (item.dataset.fixedPrice) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "size-wrapper";
+
+  wrapper.innerHTML = `
+    <span class="size-label">PRICE</span>
+    <div style="
+      margin-top:8px;
+      padding:6px 14px;
+      display:inline-block;
+      border:1px solid #e5d6c3;
+      border-radius:30px;
+      background:#f1e3c6;
+      color:#3e2c24;
+      font-size:14px;
+      font-weight:400;
+    ">
+      ${item.dataset.fixedPrice} QAR
+    </div>
+  `;
+
+  item.appendChild(wrapper);
+  return;
+}
+      
+
+
+    /* ❌ JEWELRY → NO SIZES, ONLY PRICE */
+    if (category === "jewelry") {
+      const price = document.createElement("div");
+      price.className = "size-wrapper";
+      price.innerHTML = `
+        
+        <div style="
+          margin-top:8px;
+          padding:6px 14px;
+          display:inline-block;
+          border:1px solid #e5d6c3;
+          border-radius:30px;
+          background:#f1e3c6;
+          color:#3e2c23;
+          font-size:12px;
+          font-weight:500;
+        ">
+         50 QAR
+        </div>
+      `;
+      item.appendChild(price);
+      return;
+    }
+
+    /* ❌ COASTERS → FIXED PRICE ONLY */
+    if (category === "coasters") {
+  const wrapper = document.createElement("div");
+  wrapper.className = "size-wrapper";
+  wrapper.innerHTML = `
+    <span class="size-label">PRICE</span>
+    <div style="
+      margin-top:8px;
+      padding:6px 14px;
+      display:inline-block;
+      border:1px solid #e5d6c3;
+      border-radius:30px;
+      background:#f1e3c6;
+      color:#3e2c23;
+      font-size:12px;
+      font-weight:500;
+    ">
+      2 pc - 100 QAR
+    </div>
+  `;
+  item.appendChild(wrapper);
+  return;
+}
+     // DIGITAL COLLECTION → PRICE ABOVE BUTTON
+
+ // DIGITAL COLLECTION → PRICE ABOVE BUTTON
+if (category === "tech") {
+  item.insertAdjacentHTML("beforeend", `
+    <div class="size-wrapper" style="text-align:center;">
+      <div style="
+        margin-top:8px;
+        padding:6px 14px;
+        display:inline-block;
+        border:1px solid #e5d6c3;
+        border-radius:30px;
+        background:#f1e3c6;
+        color:#3e2c23;
+        font-size:14px;
+        font-weight:600;
+      ">
+        150 QAR
+      </div>
+    </div>
+  `);
+  return;
+}
+   
+
+    /* ✅ ALL OTHER CATEGORIES → SIZE + PRICE */
+    const wrapper = document.createElement("div");
+    wrapper.className = "size-wrapper";
+
+    const label = document.createElement("span");
+    label.className = "size-label";
+    label.textContent = "SELECT SIZE";
+
+    const options = document.createElement("div");
+    options.className = "size-options";
+
+    const priceBox = document.createElement("div");
+    priceBox.className = "price-display";
+    priceBox.style.marginTop = "6px";
+    priceBox.style.fontSize = "13px";
+    priceBox.style.color = "#8b5e3c";
+    priceBox.style.fontWeight = "500";
+
+    const map = priceMaps.default;
+
+    sizes.forEach(size => {
+      const btn = document.createElement("div");
+      btn.className = "size-btn";
+      btn.textContent = size;
+
+      btn.onclick = () => {
+        options.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        priceBox.textContent = map[size];
+      };
+
+      options.appendChild(btn);
+    });
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(options);
+   wrapper.appendChild(priceBox);
+
+
+    item.appendChild(wrapper);
+  });
+
+});
+</script>
+
+    
+<script>
+function backToCategories() {
+  document.getElementById('gallery').style.display = 'none';
+  document.getElementById('sections').style.display = 'block';
+
+  window.scrollTo({
+    top: savedScrollY,
+    behavior: "smooth"
+  });
+
+  savedScrollY = 0;
+}
+</script>
+   
+        <script>
+
+
+
+</script>
+
+
+
+<script>
+function previewImage(event) {
+  const preview = document.getElementById('preview');
+  preview.src = URL.createObjectURL(event.target.files[0]);
+  preview.style.display = 'block';
+}
+
+</script>
+<section id="thankyou" style="display:none; padding:120px 20px; text-align:center; background:#f1e3c6;">
+
+  <div style="
+    max-width:650px;
+    margin:auto;
+    background:linear-gradient(145deg,#fff,#f7ead3);
+    border-radius:28px;
+    padding:70px 40px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.12);
+    border:1px solid rgba(139,94,60,0.15);
+    position:relative;
+    overflow:hidden;
+  ">
+
+    <div style="font-size:55px;">🧶</div>
+
+    <h1 style="font-size:38px;color:#3e2c23;font-family:'Marcellus',serif;">
+      Your Rug Journey Has Begun
+    </h1>
+
+    <p style="color:#7a5d48;font-size:18px;line-height:1.8;font-family:'Cormorant Garamond', serif;">
+      Your design has been received.  
+      Every knot, every thread, will now be woven with intention and care.
+    </p>
+
+    <div style="
+      margin:30px auto;
+      width:120px;
+      height:2px;
+      background:linear-gradient(90deg,transparent,#8b5e3c,transparent);
+      animation:flow 2s infinite;
+    "></div>
+
+    <p style="font-size:14px;color:#5c4b3c;">
+      “A rug is not made — it is born through patience.”
+    </p>
+
+    <button onclick="backToHome()" style="
+      margin-top:25px;
+      padding:14px 30px;
+      border:none;
+      border-radius:50px;
+      background:linear-gradient(135deg,#8b5e3c,#c2a98a);
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+    ">
+      Continue Exploring
+    </button>
+
+  </div>
+</section>
+    <script>
+document.getElementById("orderForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const btn = this.querySelector("button");
+  btn.innerText = "Sending...";
+  btn.disabled = true;
+
+  const formData = new FormData(this);
+
+  await fetch("https://formsubmit.co/sft.handmade@gmail.com", {
+    method: "POST",
+    body: formData
+  });
+
+  document.getElementById("customOrder").style.display = "none";
+  document.getElementById("thankyou").style.display = "block";
+
+  btn.innerText = "Submit Request";
+  btn.disabled = false;
+
+  this.reset();
+});
+
+function backToHome(){
+  document.getElementById("thankyou").style.display = "none";
+  document.getElementById("customOrder").style.display = "block";
+  document.getElementById("orderForm").reset();
+}
+</script>
+</body>
+</html>
