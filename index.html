@@ -81,6 +81,7 @@
   position: relative;
   height: 100vh;
   display: flex;
+background: url('artist.jpg') center/cover no-repeat;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -716,9 +717,9 @@ h1,h2,h3{ font-family:'Marcellus',serif; }
 </nav>
 <section class="hero">
 
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="artist-video.mp4" type="video/mp4">
-  </video>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+  <source src="artist-video.mp4" type="video/mp4">
+</video>
 
   <div class="hero-box">
     <h1>SFT Rugs</h1>
