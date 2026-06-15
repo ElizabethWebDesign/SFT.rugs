@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sft-rugs.com/sitemap.xml
