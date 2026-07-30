@@ -906,9 +906,8 @@ h1,h2,h3{ font-family:'Marcellus',serif; }
 <div class="col-md-4" data-category="rug"><img src="m7.jpeg"></div>
 <div class="col-md-4" data-category="rug"><img src="m8.jpeg"></div>
 <div class="col-md-4" data-category="rug"><img src="m9.jpeg"></div>
-<div class="col-md-4" data-category="rug"><img src="m9.jpeg"></div>
 <div class="col-md-4" data-category="rug"><img src="m11.jpeg"></div>
-  <div class="col-md-4" data-category="rug"><img src="MG_5363.jpg"></div> 
+  <div class="col-md-4" data-category="rug"><img src="IMG_5363.jpg"></div> 
     <div class="col-md-4" data-category="rug"><img src="m12.jpg"></div> 
     <div class="col-md-4" data-category="rug"><img src="m13.jpg"></div> 
     <div class="col-md-4" data-category="rug"><img src="m15.JPG"></div> 
@@ -1267,6 +1266,12 @@ if (item.dataset.fixedPrice) {
 
  // DIGITAL COLLECTION → PRICE ABOVE BUTTON
 if (category === "tech") {
+
+  // First tech image has a different price
+  const price = item.querySelector("img").src.includes("IMG_5599.heic")
+    ? "200 QAR"
+    : "150 QAR";
+
   item.insertAdjacentHTML("beforeend", `
     <div class="size-wrapper" style="text-align:center;">
       <div style="
@@ -1280,13 +1285,13 @@ if (category === "tech") {
         font-size:14px;
         font-weight:600;
       ">
-        150 QAR
+        ${price}
       </div>
     </div>
   `);
+
   return;
-}
-   
+}  
 
     /* ✅ ALL OTHER CATEGORIES → SIZE + PRICE */
     const wrapper = document.createElement("div");
